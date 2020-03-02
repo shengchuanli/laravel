@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//团队开发
+Route::view('/1908A/index','index.Index');
