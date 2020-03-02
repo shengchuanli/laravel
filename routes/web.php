@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+Route::prefix('/1908A/brand')->middleware('login')->group(function(){
+	Route::get('create','BrandController@create');
+	Route::post('store','BrandController@store');
+	Route::get('index','BrandController@index');
+	Route::get('/destroy/{brand_id}',('BrandController@destroy'));
+	Route::get('/edit/{brand_id}',('BrandController@edit'));
+	Route::post('/update/{brand_id}',('BrandController@update'));
 });
