@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+//登录显示视图表单页面
+Route::get('/1908A/login','LoginController@login');
+//登录数据
+Route::post('/1908A/login_do','LoginController@login_do');
