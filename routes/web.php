@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 
 //团队开发
-Route::view('/1908A/index','index.Index');
+
+Route::prefix('/1908A/index')->group(function(){
+	Route::view('/','index.Index');
+});
