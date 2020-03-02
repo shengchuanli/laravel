@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class LoginModel extends Model
 {
-      protected $table="brand";
-    protected $primaryKey="brand_id";
+    protected $table='admin';
+    protected $primaryKey='admin_id';
     public $timestamps=false;
     protected $guarded=[];
 }
