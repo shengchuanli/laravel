@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 //团队开发
@@ -21,3 +18,11 @@ Route::get('/', function () {
 Route::prefix('/1908A/index')->group(function(){
 	Route::view('/','index.Index');
 });
+
+
+
+//登录显示视图表单页面
+Route::get('/1908A/login','LoginController@login');
+//登录数据
+Route::post('/1908A/login_do','LoginController@login_do');
+
