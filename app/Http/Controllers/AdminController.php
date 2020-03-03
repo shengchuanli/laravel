@@ -84,6 +84,8 @@ class AdminController extends Controller
     public function edit($id)
     {
         $data = Admin::where('admin_id',$id)->first();
+        $data['admin_pwd']=decrypt($data['admin_pwd']);
+//        dd($data);
         return view('admin/edit',['data'=>$data]);
     }
 
@@ -109,6 +111,7 @@ class AdminController extends Controller
                     ->withErrors($validator)
                     ->withInput();
         }
+        $data['admin_pwd'] = encrypt($data['admin_pwd']);
         $res = Admin::where('admin_id',$id)->update($data);
         if($res!==false){
             return redirect('/1908A/admin/index');

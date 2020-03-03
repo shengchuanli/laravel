@@ -10,19 +10,23 @@
 <body>
 	<center>
 <h3>品牌修改</h3>
-<form class="form-horizontal" role="form" enctype="multipart/form-data" method="post" action="{{url('1908A/brand/update/'.$res->brand_id)}}">
+<form class="form-horizontal" role="form" enctype="multipart/form-data" method="post"
+	  action="{{url('1908A/brand/update/'.$res->brand_id)}}">
 	@csrf
 	<div class="form-group">
 		<label for="firstname" class="col-sm-2 control-label">品牌名字</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" id="firstname" name="brand_name" 
 				   placeholder="请输入名字" value="{{$res->brand_name}}">
+			<b style="color:blue">{{$errors->first('brand_name')}}</b>
+
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="lastname" class="col-sm-2 control-label">品牌网址</label>
 		<div class="col-sm-10">
 			<input type="text" class="form-control" name="brand_url" value="{{$res->brand_url}}">
+			<b style="color:blue">{{$errors->first('brand_url')}}</b>
 		</div>
 	</div>
 	<div class="form-group">

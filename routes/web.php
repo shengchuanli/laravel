@@ -43,7 +43,6 @@ Route::get('/1908A/login','LoginController@login');
 //登录数据
 Route::post('/1908A/login_do','LoginController@login_do');
 
-
 Route::prefix('/1908A/admin')->middleware('login')->group(function(){
     Route::get('create','AdminController@create');
     Route::post('store','AdminController@store');

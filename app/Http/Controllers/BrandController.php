@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Brand;
-use Validator;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
+
 class BrandController extends Controller
 {
     /**
@@ -61,8 +63,6 @@ class BrandController extends Controller
                 ->withErrors($validator)
                 ->withInput();
        }
-
-
 
       if($request->hasFile('brand_logo')){
         $data['brand_logo']=$this->upload('brand_logo');
@@ -122,6 +122,27 @@ class BrandController extends Controller
            if($request->hasFile('brand_logo')){
          $data['brand_logo']=$this->upload('brand_logo');
       }
+
+        // 错误提示
+        $validator=Validator::make($data,[
+            'brand_name'=>['required',Rule::unique('brand')->ignore($id,'brand_id'),
+                'regex:/^[\x{4200}-\x{9fa5}A-Za-z0-9_]+$/u'],
+            'brand_url'=>'required',
+        ],[
+            'brand_name.required'=>'品牌名称必填',
+            'brand_name.unique'=>'名称已存在',
+            'brand_name.regex'=>'必须是中文 字母 数字 下划线组成',
+            'brand_url.required'=>'网址必填',
+        ]);
+
+        if($validator->fails()){
+            return redirect('/1908A/brand/edit/'.$id)
+                ->withErrors($validator)
+                ->withInput();
+        }
+        if($request->hasFile('brand_logo')){
+            $data['brand_logo']=$this->upload('brand_logo');
+        }
       $res=Brand::where('brand_id',$id)->update($data);
       if($res!==false){
         return redirect('/1908A/brand/index');

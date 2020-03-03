@@ -43,7 +43,7 @@ class LoginController extends Controller
         //把数据库的密码解密
         $admin_pwd = decrypt($login['admin_pwd']);
         //判断
-        if($data['admin_pwd']!=$admin_pwd){
+        if($data['admin_pwd']!==$admin_pwd){
             return redirect("/1908A/login")->with(['msg'=>'密码错误']);exit;
         }
         if($login){

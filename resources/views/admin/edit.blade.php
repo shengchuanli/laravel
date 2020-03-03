@@ -29,6 +29,13 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">密码</label>
+		<div class="col-sm-10">
+			<input type="admin_pwd"  class="form-control" value="{{$data->admin_pwd}}" id="lastname" name="admin_pwd"
+				   placeholder="请输入密码">
+		</div>
+	</div>
+	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
 			<input type="submit" class="btn btn-default" value="修改">
 		</div>
